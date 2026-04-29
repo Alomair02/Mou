@@ -37,6 +37,15 @@ export type TimelineItem = {
   summary: string;
 };
 
+export type EngineeringNote = {
+  id: string;
+  title: string;
+  domain: string;
+  summary: string;
+  tags: string[];
+  body: string[];
+};
+
 export type ConstellationNodeKind =
   | 'identity'
   | 'domain'
@@ -203,6 +212,100 @@ export const projects: Project[] = [
         href: 'https://github.com/Alomair02/credit-analyst-rag',
         kind: 'case-study',
       },
+    ],
+  },
+];
+
+export const engineeringNotes: EngineeringNote[] = [
+  {
+    id: 'flybee-locality-data',
+    title: 'Turning Locality Data Into Tourism Products',
+    domain: 'Tourism Tech, AI, and Data',
+    summary:
+      'How high-quality data about places, context, timing, and user intent can become close-to-user travel software.',
+    tags: ['Tourism tech', 'Locality data', 'Ranking', 'Personalization'],
+    body: [
+      'Tourism products become useful when they understand locality beyond a place name. A good travel system needs structured data about venues, geography, opening context, popularity signals, trip timing, social intent, and what a user is trying to do in the moment.',
+      'The interesting engineering problem is transforming those sources into product behavior. Search results need ranking, not just retrieval. Recommendations need context, not just a list of attractions. Planning flows need to account for distance, time, density, and whether a place fits the trip. AI is most valuable when it sits on top of grounded data and turns local signals into explanations, suggestions, and next actions users can trust.',
+      'Flybee is the product lens for that direction: tourism tech where data quality, AI-assisted reasoning, and mobile UX meet. The goal is not to show a model for its own sake, but to build travel experiences that feel local, practical, and close to the user.',
+    ],
+  },
+  {
+    id: 'retrieval-before-generation',
+    title: 'Retrieval Before Generation',
+    domain: 'NLP and RAG',
+    summary:
+      'Why useful AI systems depend first on ingestion quality, retrieval behavior, grounding, and evaluation.',
+    tags: ['NLP', 'RAG', 'Evaluation', 'Grounding'],
+    body: [
+      'For retrieval-augmented systems, generation is the visible layer, but retrieval is where most product quality is decided. If documents are chunked poorly, indexed without useful metadata, or retrieved with weak ranking, the model receives the wrong context and produces confident but fragile answers.',
+      'I think about RAG as a data product before an LLM product. The system should make ingestion explicit, keep source boundaries clear, rank evidence by usefulness, and expose enough traceability to evaluate failure cases. That makes the final answer easier to trust and easier to improve.',
+      'The same pattern applies outside document QA: when an AI feature is close to real user decisions, the important questions are what data grounds the system, what gets retrieved, how relevance is measured, and how the user can tell when the system is uncertain.',
+    ],
+  },
+  {
+    id: 'computer-vision-realtime',
+    title: 'Computer Vision Under Real-Time Constraints',
+    domain: 'Computer Vision and Edge Systems',
+    summary:
+      'What changes when image processing, interpolation, and gesture recognition have to work with live device constraints.',
+    tags: ['Computer vision', 'ESP32', 'Latency', 'PyTorch'],
+    body: [
+      'Computer vision feels different when the input is a live constrained device instead of a clean offline dataset. The ESP32 streaming project forced the system to care about packet framing, unreliable timing, camera quality, Wi-Fi behavior, and the cost of every processing step.',
+      'The pipeline combines embedded capture, TCP streaming, server-side frame handling, interpolation, and a lightweight gesture classifier. That creates a useful engineering tradeoff: better visual smoothness and recognition quality have to be balanced against latency and robustness.',
+      'That constraint is valuable. It turns CV from a notebook result into an end-to-end system where networking, model behavior, UI responsiveness, and hardware limits all matter at the same time.',
+    ],
+  },
+  {
+    id: 'data-pipeline-decision-support',
+    title: 'From Data Pipeline to Decision Support',
+    domain: 'Data Science',
+    summary:
+      'How raw data becomes useful only after preparation, feature design, measurement, and product framing.',
+    tags: ['Data pipelines', 'Features', 'Metrics', 'Decision support'],
+    body: [
+      'A data science project is only useful if its outputs help someone decide or act. That means the pipeline matters as much as the model: collection, preparation, feature design, validation, and presentation all shape whether the result becomes usable.',
+      'I try to frame data work around the decision it supports. What signal is the user missing? What error would be costly? What metric shows improvement? Those questions keep the implementation connected to usefulness instead of stopping at a score or chart.',
+      'This is the bridge I want my portfolio to show: not only building models, but turning data into practical systems that can be inspected, evaluated, and improved.',
+    ],
+  },
+  {
+    id: 'embedded-product-constraints',
+    title: 'Embedded Software Meets Product Constraints',
+    domain: 'Embedded SWE',
+    summary:
+      'Protocol design, reliability, and hardware limits are product concerns when software touches the physical world.',
+    tags: ['Embedded', 'Protocols', 'Reliability', 'Networking'],
+    body: [
+      'Embedded work makes constraints concrete. Memory, timing, camera bandwidth, connectivity, and recovery behavior are not background details; they define what the product can feel like.',
+      'That is why I like designing simple explicit protocols around device behavior. A framed stream, clear commands, reconnection logic, and predictable fallback behavior make the system easier to debug and easier to trust.',
+      'The broader lesson is that embedded software is still product software. The user experiences the reliability of the whole system, not the elegance of one isolated component.',
+    ],
+  },
+  {
+    id: 'project-mou-interface',
+    title: 'Project Mou as a Technical Interface',
+    domain: 'SWE and System Design',
+    summary:
+      'Why this portfolio is structured as an inspectable interface instead of a static resume page.',
+    tags: ['React', 'System design', 'Portfolio', 'UX'],
+    body: [
+      'Project Mou is built as an interface because a technical portfolio should make relationships visible. Skills, projects, domains, and direction are more useful when they can be scanned as a connected system rather than read as a long static page.',
+      'The constellation is not just visual decoration. It is a way to show how software engineering, AI and data, systems, and product delivery connect across the work. The rest of the page then gives recruiters and engineers a practical path from high-level signal to concrete project evidence.',
+      'That structure reflects how I want to present myself: broad computer engineering foundation, but organized around useful products and inspectable engineering decisions.',
+    ],
+  },
+  {
+    id: 'cpu-scheduling-systems-lens',
+    title: 'CPU Scheduling as a Systems Lens',
+    domain: 'Operating Systems',
+    summary:
+      'A compact way to reason about fairness, throughput, latency, simulation, and testable systems behavior.',
+    tags: ['C', 'Scheduling', 'Operating systems', 'Simulation'],
+    body: [
+      'CPU scheduling is a small topic with a large systems lesson: every policy encodes tradeoffs. Optimizing for responsiveness, fairness, throughput, or simplicity changes how the system behaves under load.',
+      'A scheduler project is useful because the behavior can be simulated, tested, and compared. Workloads make assumptions visible, and test cases expose whether the implementation matches the policy.',
+      'It sits lower in my current positioning than AI, data, and product systems, but it still matters. It shows comfort with fundamentals and with reasoning about system behavior through code.',
     ],
   },
 ];

@@ -9,6 +9,8 @@ import {
   ArrowDown,
   ArrowUpRight,
   BrainCircuit,
+  BookOpen,
+  ChevronDown,
   Code2,
   Cpu,
   Database,
@@ -26,10 +28,12 @@ import { SkillConstellation } from './components/SkillConstellation';
 import {
   constellationNodes,
   domains,
+  engineeringNotes,
   profile,
   projects,
   timeline,
   type ConstellationNode,
+  type EngineeringNote,
   type SkillDomain,
 } from './data/profile';
 
@@ -101,8 +105,47 @@ function NodeInspector({ node }: { node: ConstellationNode }) {
   );
 }
 
+function EngineeringNotePanel({
+  note,
+  expanded,
+  onToggle,
+}: {
+  note: EngineeringNote;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  const panelId = `note-panel-${note.id}`;
+
+  return (
+    <article className={`note-card${expanded ? ' is-expanded' : ''}`}>
+      <button
+        type="button"
+        aria-expanded={expanded}
+        aria-controls={panelId}
+        onClick={onToggle}
+      >
+        <span className="note-card__meta">{note.domain}</span>
+        <span className="note-card__title">{note.title}</span>
+        <span className="note-card__summary">{note.summary}</span>
+        <span className="note-card__tags" aria-label={`${note.title} tags`}>
+          {note.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </span>
+        <ChevronDown className="note-card__chevron" size={18} aria-hidden="true" />
+      </button>
+      <div className="note-card__body" id={panelId} hidden={!expanded}>
+        {note.body.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function App() {
   const [selectedNode, setSelectedNode] = useState<ConstellationNode>(constellationNodes[0]);
+  const [expandedNoteId, setExpandedNoteId] = useState<string | null>(engineeringNotes[0]?.id ?? null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const selectedNodeId = selectedNode.id;
@@ -187,6 +230,7 @@ function App() {
             </a>
             <a href="#profile-map">Profile</a>
             <a href="#projects">Projects</a>
+            <a href="#notes">Notes</a>
             <a href="#contact">Contact</a>
           </nav>
         </header>
@@ -297,6 +341,30 @@ function App() {
                   ))}
                 </div>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="content-section notes-section" id="notes">
+          <div className="section-heading">
+            <p className="section-kicker">
+              <BookOpen size={16} aria-hidden="true" />
+              Engineering notes
+            </p>
+            <h2>Short field notes on AI, data, products, and systems.</h2>
+          </div>
+          <div className="notes-list">
+            {engineeringNotes.map((note) => (
+              <EngineeringNotePanel
+                key={note.id}
+                note={note}
+                expanded={expandedNoteId === note.id}
+                onToggle={() =>
+                  setExpandedNoteId((currentNoteId) =>
+                    currentNoteId === note.id ? null : note.id,
+                  )
+                }
+              />
             ))}
           </div>
         </section>
