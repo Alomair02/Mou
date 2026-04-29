@@ -1,3 +1,14 @@
 # env
 .env
+.codex
+.DS_Store
 
+# dependencies
+node_modules
+
+# build output
+dist
+*.tsbuildinfo
+
+# local logs
+*.log
