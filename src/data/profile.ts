@@ -95,6 +95,11 @@ export const profile = {
       href: 'mailto:abdulaziz.t.alomair@gmail.com',
       kind: 'email',
     },
+    {
+      label: 'Resume',
+      href: 'https://drive.google.com/file/d/1Sqw7w5gUvGqvCq1SbR6hKBkSS18YgbDX/view?usp=sharing',
+      kind: 'resume',
+    },
   ] satisfies ProfileLink[],
 };
 
