@@ -1009,6 +1009,10 @@ code {
   padding: 0 1rem 1.1rem;
 }
 
+.note-card__body[hidden] {
+  display: none;
+}
+
 .note-card__body p {
   max-width: 60rem;
   margin: 0;

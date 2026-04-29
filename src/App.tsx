@@ -134,7 +134,7 @@ function EngineeringNotePanel({
         </span>
         <ChevronDown className="note-card__chevron" size={18} aria-hidden="true" />
       </button>
-      <div className="note-card__body" id={panelId} hidden={!expanded}>
+      <div className="note-card__body" id={panelId} hidden={!expanded} aria-hidden={!expanded}>
         {note.body.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
@@ -145,7 +145,7 @@ function EngineeringNotePanel({
 
 function App() {
   const [selectedNode, setSelectedNode] = useState<ConstellationNode>(constellationNodes[0]);
-  const [expandedNoteId, setExpandedNoteId] = useState<string | null>(engineeringNotes[0]?.id ?? null);
+  const [expandedNoteId, setExpandedNoteId] = useState(engineeringNotes[0]?.id ?? '');
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const selectedNodeId = selectedNode.id;
@@ -359,11 +359,7 @@ function App() {
                 key={note.id}
                 note={note}
                 expanded={expandedNoteId === note.id}
-                onToggle={() =>
-                  setExpandedNoteId((currentNoteId) =>
-                    currentNoteId === note.id ? null : note.id,
-                  )
-                }
+                onToggle={() => setExpandedNoteId(note.id)}
               />
             ))}
           </div>
