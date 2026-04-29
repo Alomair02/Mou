@@ -996,7 +996,7 @@ code {
   top: 1.2rem;
   right: 1rem;
   color: var(--green-hot);
-  transition: transform 180ms ease;
+  transition: transform 220ms ease;
 }
 
 .note-card.is-expanded .note-card__chevron {
@@ -1005,15 +1005,30 @@ code {
 
 .note-card__body {
   display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 260ms ease,
+    opacity 180ms ease;
+}
+
+.note-card.is-expanded .note-card__body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.note-card__body-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.note-card__body-content {
+  display: grid;
   gap: 0.75rem;
   padding: 0 1rem 1.1rem;
 }
 
-.note-card__body[hidden] {
-  display: none;
-}
-
-.note-card__body p {
+.note-card__body-content p {
   max-width: 60rem;
   margin: 0;
 }
@@ -1180,7 +1195,7 @@ code {
   .domain-card p,
   .project-card p,
   .note-card__summary,
-  .note-card__body p,
+  .note-card__body-content p,
   .timeline article p,
   .site-footer p {
     overflow-wrap: anywhere;
