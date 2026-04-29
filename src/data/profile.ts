@@ -143,14 +143,14 @@ export const projects: Project[] = [
   {
     name: 'Flybee Platform',
     domain: 'Software Engineering',
-    status: 'Backend public, iOS private-prep',
+    status: 'Backend private-prep, iOS private-prep',
     repoStatus: 'private-prep',
     summary:
       'A travel planning product with an iOS client, Go backend, social circles, media flows, place discovery, and chat control-plane services.',
     stack: ['Swift', 'Go', 'PostgreSQL', 'XMPP'],
     impact: 'Shows full-stack product architecture, API design, mobile integration, and operational cleanup discipline.',
     links: [
-      { label: 'Backend repo', href: 'https://github.com/Alomair02/flybee-backend', kind: 'repo' },
+      { label: 'Backend private-prep', href: 'https://github.com/Alomair02/flybee-backend', kind: 'case-study' },
       { label: 'iOS private-prep', href: 'https://github.com/Alomair02/Flybee', kind: 'case-study' },
     ],
   },
