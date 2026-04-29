@@ -15,6 +15,7 @@ import {
   Cpu,
   Database,
   ExternalLink,
+  FileText,
   GraduationCap,
   Mail,
   MapPin,
@@ -54,6 +55,10 @@ function LinkIcon({ kind }: { kind: string }) {
 
   if (kind === 'linkedin') {
     return <Network size={18} aria-hidden="true" />;
+  }
+
+  if (kind === 'resume') {
+    return <FileText size={18} aria-hidden="true" />;
   }
 
   return <Mail size={18} aria-hidden="true" />;
@@ -160,6 +165,7 @@ function App() {
   const [expandedNoteId, setExpandedNoteId] = useState<string | null>(engineeringNotes[0]?.id ?? null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const resumeLink = profile.links.find((link) => link.kind === 'resume');
   const selectedNodeId = selectedNode.id;
 
   const stats = useMemo(
@@ -262,6 +268,12 @@ function App() {
                 <Network size={18} aria-hidden="true" />
                 View knowledge map
               </a>
+              {resumeLink ? (
+                <a className="secondary-action" href={resumeLink.href} target="_blank" rel="noreferrer">
+                  <FileText size={18} aria-hidden="true" />
+                  Resume
+                </a>
+              ) : null}
               <a className="secondary-action" href="#contact">
                 <Mail size={18} aria-hidden="true" />
                 Contact
@@ -414,7 +426,13 @@ function App() {
           </div>
           <div className="footer-links" aria-label="External links">
             {profile.links.map((link) => (
-              <a key={link.label} href={link.href} title={link.label}>
+              <a
+                key={link.label}
+                href={link.href}
+                title={link.label}
+                target={link.kind === 'email' ? undefined : '_blank'}
+                rel={link.kind === 'email' ? undefined : 'noreferrer'}
+              >
                 <LinkIcon kind={link.kind} />
                 {link.label}
                 <ArrowUpRight size={15} aria-hidden="true" />

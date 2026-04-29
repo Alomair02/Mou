@@ -470,7 +470,7 @@ export const constellationNodes: ConstellationNode[] = [
   },
   {
     id: 'education',
-    label: 'CE Degree',
+    label: 'COE Degree',
     kind: 'education',
     domain: 'Education',
     detail: 'Computer engineering foundation across hardware, software, systems, data, and engineering design.',
