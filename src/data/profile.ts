@@ -194,7 +194,7 @@ export const projects: Project[] = [
     status: 'Private-prep',
     repoStatus: 'private-prep',
     summary:
-      'A retrieval-augmented analysis prototype being held private until its original API key history is rotated and rebuilt cleanly.',
+      'A retrieval-augmented analysis prototype being held private after a clean history rebuild until its exposed API key is rotated and the implementation is filled out.',
     stack: ['Python', 'RAG', 'Database retrieval', 'Streamlit'],
     impact: 'Keeps the AI showcase visible as a case-study slot without exposing unsafe repository history.',
     links: [
