@@ -334,7 +334,7 @@ function App() {
               <Server size={16} aria-hidden="true" />
               Project evidence
             </p>
-            <h2>Replace these slots with the strongest proof from your degree and builds.</h2>
+            <h2>Below is a list of curated projects that showcase technical knowledge.</h2>
           </div>
           <div className="project-list">
             {projects.map((project) => (
