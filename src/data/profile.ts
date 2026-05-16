@@ -235,6 +235,20 @@ export const projects: Project[] = [
 
 export const engineeringNotes: EngineeringNote[] = [
   {
+    id: 'blitz-parallel-actuarial-modeling',
+    title: 'Embarrassingly Parallel Finance Models',
+    domain: 'GPU Computing and Actuarial Data',
+    summary:
+      'How Blitz frames reserving work as a parallel data problem: many independent scenarios, large input volumes, and repeatable validation loops.',
+    tags: ['GPU', 'Monte Carlo', 'Actuarial', 'Parallel data'],
+    body: [
+      'A lot of financial and actuarial modeling becomes practical when the work is framed as independent scenario evaluation. One policy, one company, one accident year, one bootstrap trial, or one simulation path can often be computed without waiting on the others. That makes the problem embarrassingly parallel: the hard part is not inventing dependency-heavy logic, it is moving data cleanly, launching enough work, and validating the outputs.',
+      'Blitz is a small inspectable version of that idea. It parses insurance loss triangles, sends compact arrays to AMD HIP kernels, and runs thousands of bootstrap reserve projections in parallel. The same shape appears at industry scale when teams process millions or billions of rows across pricing, reserving, capital modeling, stress testing, fraud signals, market risk, and stochastic cash-flow projections.',
+      'Monte Carlo-derived models are especially suited to this pattern because they are built from repeated runs. You can tune assumptions, change priors, vary overdispersion, test stress cases, compare calibration, and rerun the model many times. Each iteration becomes more valuable when the compute layer is fast enough to make experimentation routine instead of exceptional.',
+      'The engineering lesson is that model quality depends on more than the formula. Data layout, reproducible pipelines, runtime performance, diagnostics, and test cases all decide whether a model can be trusted. In actuarial work, that trust matters because the outputs connect directly to reserves, solvency, risk margins, and management decisions.',
+    ],
+  },
+  {
     id: 'flybee-locality-data',
     title: 'Turning Locality Data Into Tourism Products',
     domain: 'Tourism Tech, AI, and Data',
