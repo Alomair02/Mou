@@ -172,7 +172,7 @@ function App() {
     () => [
       { value: '4', label: 'technical domains' },
       { value: '15+', label: 'profile nodes' },
-      { value: '5', label: 'curated project records' },
+      { value: String(projects.length), label: 'curated project records' },
     ],
     [],
   );

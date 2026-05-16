@@ -155,6 +155,18 @@ export const projects: Project[] = [
     links: [{ label: 'Repository', href: 'https://github.com/Alomair02/Mou', kind: 'repo' }],
   },
   {
+    name: 'Blitz',
+    domain: 'AI and Data',
+    status: 'Public repository',
+    repoStatus: 'public',
+    summary:
+      'GPU-accelerated actuarial reserving sandbox that parses Schedule P-style loss triangles, runs AMD HIP bootstrap chain-ladder simulations, and validates IBNR reserve distributions against observed outcomes.',
+    stack: ['AMD HIP', 'ROCm', 'Python', 'Actuarial reserving', 'Bootstrap simulation'],
+    impact:
+      'Shows data preparation, GPU parallelism, actuarial model validation, and clear explanation of uncertainty.',
+    links: [{ label: 'Repository', href: 'https://github.com/Alomair02/Blitz', kind: 'repo' }],
+  },
+  {
     name: 'Flybee Platform',
     domain: 'Software Engineering',
     status: 'Backend private-prep, iOS private-prep',
@@ -474,6 +486,17 @@ export const constellationNodes: ConstellationNode[] = [
     scale: 1.15,
   },
   {
+    id: 'blitz',
+    label: 'Blitz',
+    kind: 'project',
+    domain: 'Featured Project',
+    detail:
+      'AMD HIP actuarial reserving sandbox for parsing insurance loss triangles, running bootstrap IBNR simulations, and validating uncertainty against observed outcomes.',
+    color: '#ffffff',
+    position: [-2.35, -3.35, 0.15],
+    scale: 1.12,
+  },
+  {
     id: 'education',
     label: 'COE Degree',
     kind: 'education',
@@ -498,6 +521,10 @@ export const constellationEdges: ConstellationEdge[] = [
   { from: 'systems', to: 'capstone' },
   { from: 'data', to: 'python' },
   { from: 'data', to: 'evaluation' },
+  { from: 'data', to: 'blitz' },
+  { from: 'blitz', to: 'python' },
+  { from: 'blitz', to: 'evaluation' },
+  { from: 'systems', to: 'blitz' },
   { from: 'product', to: 'delivery' },
   { from: 'product', to: 'fullstack' },
   { from: 'capstone', to: 'embedded' },
