@@ -97,7 +97,7 @@ export const profile = {
     },
     {
       label: 'Resume',
-      href: 'https://drive.google.com/file/d/1Sqw7w5gUvGqvCq1SbR6hKBkSS18YgbDX/view?usp=sharing',
+      href: 'https://drive.google.com/file/d/1cqDHmYJWUeMEJCwetF6XhyXHr0EF_KyB/view?usp=sharing',
       kind: 'resume',
     },
   ] satisfies ProfileLink[],
