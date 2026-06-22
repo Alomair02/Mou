@@ -31,16 +31,16 @@
   --cyan: #66d9ff;
   --max-width: 1180px;
   --scroll-progress: 0;
-  --content-opacity: 0;
-  --constellation-opacity: 1;
+  --content-opacity: 1;
+  --constellation-opacity: 0.5;
   --constellation-blur: 0px;
-  --constellation-brightness: 1.16;
-  --constellation-saturation: 1.16;
+  --constellation-brightness: 1.05;
+  --constellation-saturation: 1.08;
   --signal-opacity: 1;
-  --atmosphere-opacity: 0.22;
-  --header-offset: -0.6rem;
-  --hero-offset: 1.6rem;
-  --section-offset: 1.2rem;
+  --atmosphere-opacity: 0.3;
+  --header-offset: 0rem;
+  --hero-offset: 0rem;
+  --section-offset: 0rem;
   --z-webgl: 0;
   --z-atmosphere: 1;
   --z-content: 2;
@@ -287,7 +287,7 @@ code {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.62fr);
   gap: 2rem;
-  align-items: end;
+  align-items: center;
   width: min(calc(100% - 2rem), var(--max-width));
   min-height: calc(100svh - 4.5rem);
   margin: 0 auto;
@@ -305,10 +305,6 @@ code {
   transition:
     opacity 120ms linear,
     transform 120ms linear;
-}
-
-.app-shell:not(.is-scrolled) .hero-copy {
-  pointer-events: none;
 }
 
 .section-kicker {
@@ -427,26 +423,14 @@ code {
 }
 
 .hero-signal {
-  position: fixed;
-  top: 1rem;
-  right: auto;
-  left: 1rem;
+  position: relative;
   z-index: calc(var(--z-content) + 1);
   display: grid;
-  width: min(42rem, calc(100vw - 2rem));
+  width: 100%;
   justify-items: stretch;
-  padding-bottom: 0;
   opacity: var(--signal-opacity);
   pointer-events: none;
-  transform: none;
-  transition:
-    opacity 120ms linear,
-    transform 120ms linear;
-}
-
-.app-shell.is-scrolled .hero-signal {
-  pointer-events: none;
-  transform: translateY(1rem);
+  transition: opacity 120ms linear;
 }
 
 .scroll-indicator {
@@ -1138,11 +1122,6 @@ code {
     font-size: 2rem;
   }
 
-  .hero-signal {
-    right: auto;
-    left: 1rem;
-  }
-
   .metrics-strip,
   .domain-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1264,16 +1243,7 @@ code {
   }
 
   .hero-signal {
-    top: 1rem;
-    right: auto;
-    bottom: auto;
-    left: 1rem;
-    width: min(22rem, calc(100vw - 3rem));
-    transform: none;
-  }
-
-  .app-shell.is-scrolled .hero-signal {
-    transform: translateY(0.75rem);
+    width: 100%;
   }
 
   .metrics-strip,

@@ -38,8 +38,10 @@ import {
   type SkillDomain,
 } from './data/profile';
 
-const SCROLL_STATE_THRESHOLD = 8;
-const CONTENT_FADE_DISTANCE = 60;
+const SCROLL_STATE_THRESHOLD = 0;
+// Fraction of the viewport height over which the constellation recedes from a
+// hero backdrop to a dim background as the visitor scrolls into the content.
+const CONSTELLATION_FADE_RATIO = 0.75;
 
 const domainIcons = {
   software: Code2,
@@ -176,17 +178,18 @@ function App() {
     ],
     [],
   );
-  const contentOpacity = Math.min(scrollProgress * 1.25, 1);
-  const constellationOpacity = Math.max(0.16, 1 - scrollProgress * 1.25);
-  const constellationBlur = `${Math.min(scrollProgress * 7, 7)}px`;
-  const constellationBrightness = Math.max(0.7, 1.12 - scrollProgress * 0.42);
-  const constellationSaturation = Math.max(0.75, 1.12 - scrollProgress * 0.37);
-  const signalOpacity = Math.max(0, 1 - scrollProgress * 2.2);
-  const atmosphereOpacity = 0.22 + scrollProgress * 0.78;
-  const hiddenContentAmount = 1 - contentOpacity;
-  const headerOffset = `${hiddenContentAmount * -0.6}rem`;
-  const heroOffset = `${hiddenContentAmount * 1.6}rem`;
-  const sectionOffset = `${hiddenContentAmount * 1.2}rem`;
+  // The profile is always present and overlays the constellation; only the
+  // backdrop responds to scroll, dimming and softening as content takes over.
+  const contentOpacity = 1;
+  const constellationOpacity = Math.max(0.1, 0.5 - scrollProgress * 0.55);
+  const constellationBlur = `${Math.min(scrollProgress * 6, 6)}px`;
+  const constellationBrightness = Math.max(0.7, 1.05 - scrollProgress * 0.35);
+  const constellationSaturation = Math.max(0.78, 1.08 - scrollProgress * 0.3);
+  const signalOpacity = 1;
+  const atmosphereOpacity = 0.3 + scrollProgress * 0.6;
+  const headerOffset = '0rem';
+  const heroOffset = '0rem';
+  const sectionOffset = '0rem';
   const scrollToConstellation = (event: ReactMouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     window.history.pushState(null, '', '#constellation');
@@ -195,7 +198,8 @@ function App() {
 
   useEffect(() => {
     const updateScrollState = () => {
-      const nextProgress = Math.min(window.scrollY / CONTENT_FADE_DISTANCE, 1);
+      const fadeDistance = Math.max(window.innerHeight * CONSTELLATION_FADE_RATIO, 1);
+      const nextProgress = Math.min(window.scrollY / fadeDistance, 1);
 
       setIsScrolled(window.scrollY > SCROLL_STATE_THRESHOLD);
       setScrollProgress(nextProgress);
