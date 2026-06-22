@@ -170,9 +170,9 @@ function App() {
 
   const stats = useMemo(
     () => [
-      { value: '4', label: 'technical domains' },
-      { value: '15+', label: 'profile nodes' },
-      { value: String(projects.length), label: 'curated project records' },
+      { value: '4', label: 'engineering domains' },
+      { value: '15+', label: 'skills mapped' },
+      { value: String(projects.length), label: 'projects, lab to prod' },
     ],
     [],
   );
@@ -238,9 +238,9 @@ function App() {
 
       <div className="page-layer">
         <header className="site-header">
-          <a className="brand-mark" href="#profile" aria-label="Project Mou home">
-            <span>M</span>
-            <strong>Project Mou</strong>
+          <a className="brand-mark" href="#profile" aria-label="Abdulaziz Alomair home">
+            <span>A</span>
+            <strong>Abdulaziz Alomair</strong>
           </a>
           <nav aria-label="Primary navigation">
             <a href="#constellation" onClick={scrollToConstellation}>
@@ -334,7 +334,7 @@ function App() {
               <Server size={16} aria-hidden="true" />
               Project evidence
             </p>
-            <h2>Below is a list of curated projects that showcase technical knowledge.</h2>
+            <h2>Projects taken from the domain down to production.</h2>
           </div>
           <div className="project-list">
             {projects.map((project) => (
@@ -343,7 +343,9 @@ function App() {
                   <p>{project.domain}</p>
                   <h3>{project.name}</h3>
                 </div>
-                <span>{project.status}</span>
+                <span className={`project-status project-status--${project.repoStatus}`}>
+                  {project.status}
+                </span>
                 <p>{project.summary}</p>
                 <div className="skill-list" aria-label={`${project.name} stack`}>
                   {project.stack.map((skill) => (
@@ -421,7 +423,7 @@ function App() {
             </p>
             <h2>Make the next step easy to inspect.</h2>
             <p>
-              The repository set behind this profile is intentionally curated: public links are inspectable, private-prep projects are named only when cleanup is still in progress.
+              The repositories behind this portfolio are curated: public links are inspectable; private-prep work is named once it is production-ready.
             </p>
           </div>
           <div className="footer-links" aria-label="External links">

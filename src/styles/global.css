@@ -340,7 +340,7 @@ code {
 }
 
 .hero-copy__headline {
-  max-width: 14ch;
+  max-width: 19ch;
   margin: 0;
   font-family: var(--font-display);
   font-size: 2.55rem;
@@ -872,12 +872,27 @@ code {
   align-self: start;
   padding: 0.36rem 0.5rem;
   border-radius: 4px;
-  color: var(--amber);
-  background: rgba(255, 186, 56, 0.09);
-  box-shadow: inset 0 0 0 1px rgba(255, 186, 56, 0.22);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 800;
+}
+
+.project-status--public {
+  color: var(--green-hot);
+  background: rgba(115, 218, 175, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(115, 218, 175, 0.22);
+}
+
+.project-status--private-prep {
+  color: var(--amber);
+  background: rgba(255, 186, 56, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(255, 186, 56, 0.22);
+}
+
+.project-status--archived {
+  color: var(--dim);
+  background: rgba(135, 148, 140, 0.08);
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 
 .project-card strong {

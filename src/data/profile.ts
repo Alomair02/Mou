@@ -61,7 +61,7 @@ export type ConstellationNode = {
   domain: string;
   detail: string;
   color: string;
-  position: [number, number, number];
+  point: [number, number];
   scale?: number;
 };
 
@@ -71,14 +71,13 @@ export type ConstellationEdge = {
 };
 
 export const profile = {
-  name: 'Mou',
-  role: 'Fresh Computer Engineering Graduate',
+  name: 'Abdulaziz',
+  role: 'Data Science & Production Engineering',
   location: 'Dammam, Saudi Arabia',
-  headline:
-    'A systems-minded engineer mapping software, hardware, data, and product thinking into practical builds.',
+  headline: 'Domain-driven data science, built down the stack to production.',
   summary:
-    'Project Mou is a living technical profile: a curated GitHub surface, a knowledge graph, and a portfolio interface for projects that can be inspected, discussed, and improved.',
-  availability: 'Portfolio cleanup in progress for graduate roles, internships, and early-career engineering teams',
+    'Abdulaziz starts from a domain’s real requirements, models the data to fit its story, then installs each layer down the stack until the work ships as a production-grade product.',
+  availability: 'Open to data science, ML, and full-stack production engineering roles.',
   links: [
     {
       label: 'GitHub',
@@ -105,90 +104,78 @@ export const profile = {
 
 export const domains: SkillDomain[] = [
   {
+    id: 'data',
+    label: 'Data Science & ML',
+    shortLabel: 'Data Sci',
+    color: '#9f8cff',
+    summary:
+      'Modeling data around the domain’s story — pipelines, evaluation, and validation you can trust.',
+    skills: ['Python', 'ML modeling', 'Data analysis', 'Model validation', 'Experimentation'],
+  },
+  {
+    id: 'product',
+    label: 'Production Delivery',
+    shortLabel: 'Product',
+    color: '#ff7d66',
+    summary:
+      'Taking scoped, documented work all the way to a deployed, maintainable production product.',
+    skills: ['Deployment', 'API design', 'Documentation', 'UX thinking', 'Release scoping'],
+  },
+  {
     id: 'software',
     label: 'Software Engineering',
     shortLabel: 'Software',
     color: '#58d6a3',
     summary:
-      'Designing maintainable applications with clean state, typed interfaces, testing discipline, and readable architecture.',
+      'Typed, tested applications with clean state and architecture that holds up in production.',
     skills: ['TypeScript', 'React', 'API design', 'Testing', 'Git workflows'],
   },
   {
     id: 'systems',
-    label: 'Systems and Embedded',
+    label: 'Systems & Embedded',
     shortLabel: 'Systems',
     color: '#f3b45c',
     summary:
-      'Reasoning close to the machine through circuits, microcontrollers, operating systems, and performance constraints.',
+      'Reasoning close to the machine: microcontrollers, operating systems, and performance limits.',
     skills: ['C/C++', 'Microcontrollers', 'Digital logic', 'Linux', 'Networking'],
-  },
-  {
-    id: 'data',
-    label: 'AI and Data',
-    shortLabel: 'AI/Data',
-    color: '#9f8cff',
-    summary:
-      'Building useful intelligence from models, data pipelines, evaluation, and careful product framing.',
-    skills: ['Python', 'ML basics', 'Data analysis', 'Model evaluation', 'Automation'],
-  },
-  {
-    id: 'product',
-    label: 'Product Delivery',
-    shortLabel: 'Product',
-    color: '#ff7d66',
-    summary:
-      'Turning ambiguous ideas into usable interfaces, scoped releases, documented decisions, and deployable outcomes.',
-    skills: ['UX thinking', 'Documentation', 'Deployment', 'Agile planning', 'Communication'],
   },
 ];
 
 export const projects: Project[] = [
   {
-    name: 'Project Mou',
-    domain: 'Product Delivery',
-    status: 'Public portfolio hub',
-    repoStatus: 'public',
-    summary:
-      'A deployed React and WebGL portfolio that turns repositories, skills, coursework, and career direction into an inspectable technical map.',
-    stack: ['React', 'TypeScript', 'Vite', 'React Three Fiber'],
-    impact: 'Standardizes the GitHub profile around a clean portfolio-first surface.',
-    links: [{ label: 'Repository', href: 'https://github.com/Alomair02/Mou', kind: 'repo' }],
-  },
-  {
     name: 'Blitz',
-    domain: 'AI and Data',
-    status: 'Public repository',
+    domain: 'Data Science & ML',
+    status: 'Public',
     repoStatus: 'public',
     summary:
-      'GPU-accelerated actuarial reserving sandbox that parses Schedule P-style loss triangles, runs AMD HIP bootstrap chain-ladder simulations, and validates IBNR reserve distributions against observed outcomes.',
-    stack: ['AMD HIP', 'ROCm', 'Python', 'Actuarial reserving', 'Bootstrap simulation'],
-    impact:
-      'Shows data preparation, GPU parallelism, actuarial model validation, and clear explanation of uncertainty.',
+      'GPU-accelerated actuarial reserving: parses loss triangles, runs AMD HIP bootstrap chain-ladder simulations, and validates IBNR distributions against observed outcomes.',
+    stack: ['AMD HIP', 'ROCm', 'Python', 'Bootstrap simulation'],
+    impact: 'Domain data, GPU parallelism, and model validation taken to a runnable result.',
     links: [{ label: 'Repository', href: 'https://github.com/Alomair02/Blitz', kind: 'repo' }],
   },
   {
     name: 'Flybee Platform',
-    domain: 'Software Engineering',
-    status: 'Backend private-prep, iOS private-prep',
+    domain: 'Production Delivery',
+    status: 'Private-prep',
     repoStatus: 'private-prep',
     summary:
-      'A travel planning product with an iOS client, Go backend, social circles, media flows, place discovery, and chat control-plane services.',
+      'A travel-planning product across an iOS client, Go backend, social graph, media flows, and chat services.',
     stack: ['Swift', 'Go', 'PostgreSQL', 'XMPP'],
-    impact: 'Shows full-stack product architecture, API design, mobile integration, and operational cleanup discipline.',
+    impact: 'Full-stack production architecture from mobile UX down to the API and data layers.',
     links: [
-      { label: 'Backend private-prep', href: 'https://github.com/Alomair02/flybee-backend', kind: 'case-study' },
-      { label: 'iOS private-prep', href: 'https://github.com/Alomair02/Flybee', kind: 'case-study' },
+      { label: 'Backend', href: 'https://github.com/Alomair02/flybee-backend', kind: 'case-study' },
+      { label: 'iOS', href: 'https://github.com/Alomair02/Flybee', kind: 'case-study' },
     ],
   },
   {
     name: 'ESP32 Video Interpolation',
-    domain: 'Systems and Embedded',
-    status: 'Public repository',
+    domain: 'Systems & Embedded',
+    status: 'Public',
     repoStatus: 'public',
     summary:
       'Real-time ESP32-S3 camera streaming over TCP with server-side frame interpolation and a gesture-recognition CNN.',
     stack: ['ESP32-S3', 'MicroPython', 'OpenCV', 'PyTorch'],
-    impact: 'Connects embedded constraints, networking, image processing, and model training in one system.',
+    impact: 'Embedded capture, networking, image processing, and model training in one running system.',
     links: [
       {
         label: 'Repository',
@@ -199,13 +186,13 @@ export const projects: Project[] = [
   },
   {
     name: 'OS CPU Scheduler',
-    domain: 'Systems and Embedded',
-    status: 'Public repository',
+    domain: 'Systems & Embedded',
+    status: 'Public',
     repoStatus: 'public',
     summary:
       'A C systems project for CPU scheduling behavior, workload simulation, and testable operating-systems concepts.',
     stack: ['C', 'Make', 'Scheduling', 'Systems testing'],
-    impact: 'Provides a compact public systems artifact with source, tests, and reproducible workflows.',
+    impact: 'A compact public systems artifact with source, tests, and reproducible workflows.',
     links: [
       {
         label: 'Repository',
@@ -215,14 +202,25 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: 'Project Mou',
+    domain: 'Production Delivery',
+    status: 'Public',
+    repoStatus: 'public',
+    summary:
+      'A deployed React and WebGL portfolio that turns repositories, skills, and direction into an inspectable technical map.',
+    stack: ['React', 'TypeScript', 'Vite', 'React Three Fiber'],
+    impact: 'A portfolio-first surface, designed and shipped end to end.',
+    links: [{ label: 'Repository', href: 'https://github.com/Alomair02/Mou', kind: 'repo' }],
+  },
+  {
     name: 'Credit Analyst RAG',
-    domain: 'AI and Data',
+    domain: 'Data Science & ML',
     status: 'Private-prep',
     repoStatus: 'private-prep',
     summary:
-      'A retrieval-augmented analysis prototype being held private after a clean history rebuild until its exposed API key is rotated and the implementation is filled out.',
+      'A retrieval-augmented analysis prototype held private after a clean history rebuild until its exposed key is rotated and the implementation is filled out.',
     stack: ['Python', 'RAG', 'Database retrieval', 'Streamlit'],
-    impact: 'Keeps the AI showcase visible as a case-study slot without exposing unsafe repository history.',
+    impact: 'Keeps the data-science showcase visible without exposing unsafe repository history.',
     links: [
       {
         label: 'Private-prep repo',
@@ -343,37 +341,45 @@ export const engineeringNotes: EngineeringNote[] = [
 
 export const timeline: TimelineItem[] = [
   {
-    label: 'Education',
-    period: 'Fresh Graduate',
-    title: 'Computer Engineering',
+    label: 'Foundation',
+    period: 'Computer Engineering',
+    title: 'Hardware to software',
     summary:
-      'Core foundation across programming, digital systems, hardware, networks, databases, algorithms, and engineering design.',
+      'A full-stack base across programming, digital systems, networks, databases, and engineering design.',
   },
   {
     label: 'Practice',
-    period: 'Project-Based',
-    title: 'Build, test, explain',
+    period: 'Production',
+    title: 'Build, validate, ship',
     summary:
-      'Portfolio emphasis is on projects that can be opened, inspected, discussed, and connected back to engineering decisions.',
+      'Taking data science down the stack into running, inspectable, production-grade systems.',
   },
   {
     label: 'Direction',
-    period: 'Next Role',
-    title: 'Software, systems, or AI product engineering',
+    period: 'Next role',
+    title: 'Data science & production engineering',
     summary:
-      'Targeting teams where a broad computer engineering foundation is useful: product software, backend systems, embedded platforms, or AI-enabled tooling.',
+      'Teams shipping data-driven products end to end — modeling, backend, and delivery.',
   },
 ];
+
+const domainById = (id: string): SkillDomain => {
+  const match = domains.find((domain) => domain.id === id);
+  if (!match) {
+    throw new Error(`Unknown domain id: ${id}`);
+  }
+  return match;
+};
 
 export const constellationNodes: ConstellationNode[] = [
   {
     id: 'mou',
-    label: 'Mou',
+    label: 'Abdulaziz',
     kind: 'identity',
     domain: 'Core',
-    detail: 'Computer engineering graduate with a broad technical foundation and a build-focused portfolio.',
+    detail: 'Computer engineer working data science down the stack into production-grade products.',
     color: '#f8f4e8',
-    position: [0, 0, 0],
+    point: [0, 0],
     scale: 1.35,
   },
   {
@@ -381,39 +387,39 @@ export const constellationNodes: ConstellationNode[] = [
     label: 'Software',
     kind: 'domain',
     domain: 'Software Engineering',
-    detail: domains[0].summary,
-    color: domains[0].color,
-    position: [-2.8, 1.25, -0.4],
+    detail: domainById('software').summary,
+    color: domainById('software').color,
+    point: [-0.46, -0.3],
     scale: 1.05,
   },
   {
     id: 'systems',
     label: 'Systems',
     kind: 'domain',
-    domain: 'Systems and Embedded',
-    detail: domains[1].summary,
-    color: domains[1].color,
-    position: [2.75, 1.05, 0.2],
+    domain: 'Systems & Embedded',
+    detail: domainById('systems').summary,
+    color: domainById('systems').color,
+    point: [0.45, -0.26],
     scale: 1.05,
   },
   {
     id: 'data',
-    label: 'AI/Data',
+    label: 'Data Sci',
     kind: 'domain',
-    domain: 'AI and Data',
-    detail: domains[2].summary,
-    color: domains[2].color,
-    position: [-2.2, -1.75, 0.55],
+    domain: 'Data Science & ML',
+    detail: domainById('data').summary,
+    color: domainById('data').color,
+    point: [-0.37, 0.34],
     scale: 1.05,
   },
   {
     id: 'product',
     label: 'Product',
     kind: 'domain',
-    domain: 'Product Delivery',
-    detail: domains[3].summary,
-    color: domains[3].color,
-    position: [2.2, -1.55, -0.5],
+    domain: 'Production Delivery',
+    detail: domainById('product').summary,
+    color: domainById('product').color,
+    point: [0.37, 0.3],
     scale: 1.05,
   },
   {
@@ -423,7 +429,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Software Engineering',
     detail: 'Interface engineering, component systems, typed state, routing, and production build workflows.',
     color: '#58d6a3',
-    position: [-4.05, 2.25, -0.1],
+    point: [-0.68, -0.52],
   },
   {
     id: 'backend',
@@ -432,7 +438,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Software Engineering',
     detail: 'HTTP APIs, data modeling, service boundaries, authentication patterns, and deployable backend structure.',
     color: '#58d6a3',
-    position: [-4.45, 0.2, 0.65],
+    point: [-0.74, -0.04],
   },
   {
     id: 'embedded',
@@ -441,7 +447,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Systems and Embedded',
     detail: 'Microcontrollers, sensor interfaces, low-level debugging, and hardware-aware software constraints.',
     color: '#f3b45c',
-    position: [4.1, 2.05, 0.75],
+    point: [0.69, -0.49],
   },
   {
     id: 'linux',
@@ -450,7 +456,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Systems and Embedded',
     detail: 'Command-line development, networking tools, services, scripting, and operational debugging.',
     color: '#f3b45c',
-    position: [4.35, 0, -0.65],
+    point: [0.73, 0],
   },
   {
     id: 'python',
@@ -459,7 +465,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'AI and Data',
     detail: 'Automation, data processing, model experiments, notebooks, and practical scripting workflows.',
     color: '#9f8cff',
-    position: [-3.75, -2.75, -0.55],
+    point: [-0.63, 0.62],
   },
   {
     id: 'evaluation',
@@ -468,7 +474,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'AI and Data',
     detail: 'Testing model behavior with clear success criteria, benchmark cases, and failure analysis.',
     color: '#9f8cff',
-    position: [-1.15, -3.05, 1.0],
+    point: [-0.19, 0.7],
   },
   {
     id: 'delivery',
@@ -477,7 +483,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Product Delivery',
     detail: 'Scoping, documentation, deployment, demos, and communication that make technical work legible.',
     color: '#ff7d66',
-    position: [3.6, -2.55, 0.3],
+    point: [0.6, 0.58],
   },
   {
     id: 'capstone',
@@ -486,7 +492,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Featured Project',
     detail: 'Embedded video streaming, TCP framing, interpolation, and hand-gesture classification in one inspectable systems build.',
     color: '#ffffff',
-    position: [0.95, 2.8, 0.8],
+    point: [0.16, -0.66],
     scale: 1.15,
   },
   {
@@ -496,7 +502,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Featured Project',
     detail: 'Travel planning product architecture across iOS, Go APIs, PostgreSQL, media, social features, and chat services.',
     color: '#ffffff',
-    position: [-1.15, 2.95, -0.7],
+    point: [-0.19, -0.7],
     scale: 1.15,
   },
   {
@@ -507,7 +513,7 @@ export const constellationNodes: ConstellationNode[] = [
     detail:
       'AMD HIP actuarial reserving sandbox for parsing insurance loss triangles, running bootstrap IBNR simulations, and validating uncertainty against observed outcomes.',
     color: '#ffffff',
-    position: [-2.35, -3.35, 0.15],
+    point: [-0.39, 0.74],
     scale: 1.12,
   },
   {
@@ -517,7 +523,7 @@ export const constellationNodes: ConstellationNode[] = [
     domain: 'Education',
     detail: 'Computer engineering foundation across hardware, software, systems, data, and engineering design.',
     color: '#66d9ff',
-    position: [0.15, -2.95, -0.75],
+    point: [0.03, 0.68],
     scale: 1.15,
   },
 ];
