@@ -96,7 +96,7 @@ export const profile = {
     },
     {
       label: 'Resume',
-      href: 'https://drive.google.com/file/d/1cqDHmYJWUeMEJCwetF6XhyXHr0EF_KyB/view?usp=sharing',
+      href: `${import.meta.env.BASE_URL}Alomair_Abdulaziz_Resume.pdf`,
       kind: 'resume',
     },
   ] satisfies ProfileLink[],
